@@ -1,0 +1,11 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package.json /app/
+
+RUN npm install
+
+COPY report.js /app/
+
+CMD ["node", "/app/report.js"]
