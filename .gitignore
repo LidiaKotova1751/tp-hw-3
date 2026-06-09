@@ -1,0 +1,19 @@
+# generated data
+data/*
+!data/.gitkeep
+
+local_data/*
+!local_data/.gitkeep
+
+# node dependencies
+reporter/node_modules/
+
+# python cache
+__pycache__/
+*.pyc
+
+# editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
