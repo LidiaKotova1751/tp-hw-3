@@ -35,6 +35,11 @@ elif [ "$command" = "inside_reporter" ]; then
     mkdir -p data
     docker run --rm --entrypoint ls --mount type=bind,source="$(pwd)/data",target=/data hw3-reporter -la //data
 
+elif [ "$command" = "report_server" ]; then
+    mkdir -p data
+    docker rm -f hw3-report-server 2>/dev/null || true
+    docker run --rm -d --name hw3-report-server -p 8080:80 --mount type=bind,source="$(pwd)/data",target=/usr/share/nginx/html,readonly nginx:alpine
+
 else
     echo "Доступные команды:"
     echo "./run.sh build_generator"
@@ -46,5 +51,6 @@ else
     echo "./run.sh clear_data"
     echo "./run.sh inside_generator"
     echo "./run.sh inside_reporter"
+    echo "./run.sh report_server"
     exit 1
 fi
